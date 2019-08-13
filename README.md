@@ -18,7 +18,7 @@ yarn add inkworks
 
 ## Example Usage
 
-The package needs to be configured with your account's secret key which is available in your Stripe Dashboard. Require it with the key's value:
+The package needs to be configured with your API key which is can be generated in your Ink.Works (Take2) Profile. Require it with the key's value:
 
 ```javascript
 const InkWorks = require('inkworks');

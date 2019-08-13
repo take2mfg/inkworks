@@ -1,0 +1,33 @@
+{
+  "name": "inkworks",
+  "version": "0.0.1",
+  "description": "Ink.Works (formerly Take2) Platform API Wrapper",
+  "keywords": [
+    "inkworks",
+    "take2",
+    "print",
+    "design",
+    "orders",
+    "print platform",
+    "api"
+  ],
+  "homepage": "https://github.com/take2mfg/inkworks",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Take2 <support@take2.co> (https://www.take2.co/)",
+  "license": "MIT",
+  "engines": {
+    "node": "^6 || ^8.1 || >=10.*"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^6.2.0",
+    "sinon": "^7.4.1"
+  },
+  "dependencies": {
+    "graphql-request": "^1.8.2"
+  }
+}

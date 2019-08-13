@@ -1,0 +1,1 @@
+exports.SAMPLE_KEY = 'abcdefghijklmnopqrstuvwzyz1234567890';

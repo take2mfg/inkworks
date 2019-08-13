@@ -1,6 +1,17 @@
 const GraphQLClient = require('graphql-request').GraphQLClient;
 
+const addresses = require('./resources/addresses');
+const carts = require('./resources/carts');
+const coupons = require('./resources/coupons');
 const customers = require('./resources/customers');
+const messages = require('./resources/messages');
+const orders = require('./resources/orders');
+const policies = require('./resources/policies');
+const products = require('./resources/products');
+const tags = require('./resources/tags');
+const taxrates = require('./resources/taxrates');
+const templates = require('./resources/templates');
+const threads = require('./resources/threads');
 
 class InkWorks {
   constructor(apiKey, opts = {}) {
@@ -19,7 +30,18 @@ class InkWorks {
 
     this.request = this.client.request.bind(this.client);
     
+    this.bindResource('addresses', addresses);
+    this.bindResource('carts', carts);
+    this.bindResource('coupons', coupons);
     this.bindResource('customers', customers);
+    this.bindResource('messages', messages);
+    this.bindResource('orders', orders);
+    this.bindResource('policies', policies);
+    this.bindResource('products', products);
+    this.bindResource('tags', tags);
+    this.bindResource('taxrates', taxrates);
+    this.bindResource('templates', templates);
+    this.bindResource('threads', threads);
   }
 
   bindResource(key, resource) {

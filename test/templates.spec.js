@@ -3,9 +3,9 @@ const InkWorks = require('../src');
 const sinon = require('sinon');
 const SAMPLE_KEY = require('./testUtils').SAMPLE_KEY;
 
-const Customers = require('../src/resources/customers');
+const Templates = require('../src/resources/templates');
 
-describe('Customers - Resource', () => {
+describe('Templates - Resource', () => {
   let inkworks;
 
   before(() => {
@@ -27,50 +27,50 @@ describe('Customers - Resource', () => {
       order: 'reverse:createdAt'
     };
 
-    await inkworks.customers.list(VARIABLES);
+    await inkworks.templates.list(VARIABLES);
 
     expect(inkworks.request.calledOnce).to.equal(true);
-    expect(inkworks.request.getCall(0).args[0]).to.equal(Customers.listQuery);
+    expect(inkworks.request.getCall(0).args[0]).to.equal(Templates.listQuery);
     expect(inkworks.request.getCall(0).args[1]).to.deep.equal(VARIABLES);
   });
 
   it('should send the right request (retrieve)', async () => {
-    await inkworks.customers.retrieve(100);
+    await inkworks.templates.retrieve(100);
 
     expect(inkworks.request.calledOnce).to.equal(true);
-    expect(inkworks.request.getCall(0).args[0]).to.equal(Customers.retrieveQuery);
+    expect(inkworks.request.getCall(0).args[0]).to.equal(Templates.retrieveQuery);
     expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ id: 100 });
   });
 
   it('should send the right request (create)', async () => {
     const VARIABLES = {
-      foo: "bar"
+      foo: "bar",
     };
 
-    await inkworks.customers.create(VARIABLES);
+    await inkworks.templates.create(VARIABLES);
 
     expect(inkworks.request.calledOnce).to.equal(true);
-    expect(inkworks.request.getCall(0).args[0]).to.equal(Customers.createQuery);
-    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ customer: VARIABLES });
+    expect(inkworks.request.getCall(0).args[0]).to.equal(Templates.createQuery);
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ template: VARIABLES });
   });
 
   it('should send the right request (update)', async () => {
     const VARIABLES = {
-      foo: "bar"
+      foo: "bar",
     };
 
-    await inkworks.customers.update(100, VARIABLES);
+    await inkworks.templates.update(100, VARIABLES);
 
     expect(inkworks.request.calledOnce).to.equal(true);
-    expect(inkworks.request.getCall(0).args[0]).to.equal(Customers.updateQuery);
-    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ customer: { id: 100, ...VARIABLES } });
+    expect(inkworks.request.getCall(0).args[0]).to.equal(Templates.updateQuery);
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ template: { id: 100, ...VARIABLES } });
   });
 
   it('should send the right request (delete)', async () => {
-    await inkworks.customers.delete(100);
+    await inkworks.templates.delete(100);
 
     expect(inkworks.request.calledOnce).to.equal(true);
-    expect(inkworks.request.getCall(0).args[0]).to.equal(Customers.deleteQuery);
-    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ customer: { id: 100 } });
+    expect(inkworks.request.getCall(0).args[0]).to.equal(Templates.deleteQuery);
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ template: { id: 100 } });
   });
 });

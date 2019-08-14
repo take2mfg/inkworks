@@ -64,8 +64,8 @@ const listQuery = `
 `;
 
 const retrieveQuery = `
-  query($id: Int) {
-    order(id: id) {
+  query($id: Int!) {
+    order(id: $id) {
       ${fields}
     }
   }

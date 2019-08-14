@@ -22,8 +22,8 @@ const listQuery = `
 `;
 
 const retrieveQuery = `
-  query($id: Int) {
-    customer(id: id) {
+  query($id: Int!) {
+    customer(id: $id) {
       ${fields}
     }
   }
@@ -63,7 +63,7 @@ module.exports = {
     return this.request(listQuery, variables);
   },
   retrieve(id) {
-    return this.request(retrieveQuery, { id });
+    return this.request(retrieveQuery, { id: id });
   },
   create(customer) {
     return this.request(createQuery, { customer });

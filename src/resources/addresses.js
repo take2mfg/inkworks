@@ -25,8 +25,8 @@ const listQuery = `
 `;
 
 const retrieveQuery = `
-  query($id: Int) {
-    address(id: id) {
+  query($id: Int!) {
+    address(id: $id) {
       ${fields}
     }
   }

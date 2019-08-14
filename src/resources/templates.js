@@ -20,8 +20,8 @@ const listQuery = `
 `;
 
 const retrieveQuery = `
-  query($id: Int) {
-    template(id: id) {
+  query($id: Int!) {
+    template(id: $id) {
       ${fields}
     }
   }

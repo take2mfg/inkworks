@@ -15,8 +15,8 @@ const listQuery = `
 `;
 
 const retrieveQuery = `
-  query($id: Int) {
-    policy(id: id) {
+  query($id: Int!) {
+    policy(id: $id) {
       ${fields}
     }
   }

@@ -22,8 +22,8 @@ const listQuery = `
 `;
 
 const retrieveQuery = `
-  query($id: Int) {
-    coupon(id: id) {
+  query($id: Int!) {
+    coupon(id: $id) {
       ${fields}
     }
   }

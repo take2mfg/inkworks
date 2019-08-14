@@ -34,8 +34,8 @@ const listQuery = `
 `;
 
 const retrieveQuery = `
-  query($id: Int) {
-    thread(id: id) {
+  query($id: Int!) {
+    thread(id: $id) {
       ${fields}
     }
   }

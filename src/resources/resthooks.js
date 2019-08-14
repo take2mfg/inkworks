@@ -17,8 +17,8 @@ const listQuery = `
 `;
 
 const retrieveQuery = `
-  query($id: Int) {
-    restHook(id: id) {
+  query($id: Int!) {
+    restHook(id: $id) {
       ${fields}
     }
   }

@@ -24,8 +24,8 @@ const listQuery = `
 `;
 
 const retrieveQuery = `
-  query($id: Int) {
-    message(id: id) {
+  query($id: Int!) {
+    message(id: $id) {
       ${fields}
     }
   }

@@ -16,8 +16,8 @@ const listQuery = `
 `;
 
 const retrieveQuery = `
-  query($id: Int) {
-    taxrate(id: id) {
+  query($id: Int!) {
+    taxrate(id: $id) {
       ${fields}
     }
   }

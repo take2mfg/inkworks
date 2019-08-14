@@ -28,8 +28,8 @@ const listQuery = `
 `;
 
 const retrieveQuery = `
-  query($id: Int) {
-    product(id: id) {
+  query($id: Int!) {
+    product(id: $id) {
       ${fields}
     }
   }

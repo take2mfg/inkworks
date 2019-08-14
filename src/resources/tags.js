@@ -17,8 +17,8 @@ const listQuery = `
 `;
 
 const retrieveQuery = `
-  query($id: Int) {
-    tag(id: id) {
+  query($id: Int!) {
+    tag(id: $id) {
       ${fields}
     }
   }

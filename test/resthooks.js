@@ -3,9 +3,9 @@ const InkWorks = require('../src');
 const sinon = require('sinon');
 const SAMPLE_KEY = require('./testUtils').SAMPLE_KEY;
 
-const Threads = require('../src/resources/threads');
+const RestHooks = require('../src/resources/resthooks');
 
-describe('Threads - Resource', () => {
+describe('RestHooks - Resource', () => {
   let inkworks;
 
   before(() => {
@@ -27,18 +27,18 @@ describe('Threads - Resource', () => {
       order: 'reverse:createdAt'
     };
 
-    await inkworks.threads.list(VARIABLES);
+    await inkworks.resthooks.list(VARIABLES);
 
     expect(inkworks.request.calledOnce).to.equal(true);
-    expect(inkworks.request.getCall(0).args[0]).to.equal(Threads.listQuery);
+    expect(inkworks.request.getCall(0).args[0]).to.equal(RestHooks.listQuery);
     expect(inkworks.request.getCall(0).args[1]).to.deep.equal(VARIABLES);
   });
 
   it('should send the right request (retrieve)', async () => {
-    await inkworks.threads.retrieve(100);
+    await inkworks.resthooks.retrieve(100);
 
     expect(inkworks.request.calledOnce).to.equal(true);
-    expect(inkworks.request.getCall(0).args[0]).to.equal(Threads.retrieveQuery);
+    expect(inkworks.request.getCall(0).args[0]).to.equal(RestHooks.retrieveQuery);
     expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ id: 100 });
   });
 
@@ -47,11 +47,11 @@ describe('Threads - Resource', () => {
       foo: "bar",
     };
 
-    await inkworks.threads.create(VARIABLES);
+    await inkworks.resthooks.create(VARIABLES);
 
     expect(inkworks.request.calledOnce).to.equal(true);
-    expect(inkworks.request.getCall(0).args[0]).to.equal(Threads.createQuery);
-    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ thread: VARIABLES });
+    expect(inkworks.request.getCall(0).args[0]).to.equal(RestHooks.createQuery);
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ restHook: VARIABLES });
   });
 
   it('should send the right request (update)', async () => {
@@ -59,18 +59,18 @@ describe('Threads - Resource', () => {
       foo: "bar",
     };
 
-    await inkworks.threads.update(100, VARIABLES);
+    await inkworks.resthooks.update(100, VARIABLES);
 
     expect(inkworks.request.calledOnce).to.equal(true);
-    expect(inkworks.request.getCall(0).args[0]).to.equal(Threads.updateQuery);
-    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ thread: { id: 100, ...VARIABLES } });
+    expect(inkworks.request.getCall(0).args[0]).to.equal(RestHooks.updateQuery);
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ restHook: { id: 100, ...VARIABLES } });
   });
 
   it('should send the right request (delete)', async () => {
-    await inkworks.threads.delete(100);
+    await inkworks.resthooks.delete(100);
 
     expect(inkworks.request.calledOnce).to.equal(true);
-    expect(inkworks.request.getCall(0).args[0]).to.equal(Threads.deleteQuery);
-    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ thread: { id: 100 } });
+    expect(inkworks.request.getCall(0).args[0]).to.equal(RestHooks.deleteQuery);
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ restHook: { id: 100 } });
   });
 });

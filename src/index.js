@@ -8,6 +8,7 @@ const messages = require('./resources/messages');
 const orders = require('./resources/orders');
 const policies = require('./resources/policies');
 const products = require('./resources/products');
+const resthooks = require('./resources/resthooks');
 const tags = require('./resources/tags');
 const taxrates = require('./resources/taxrates');
 const templates = require('./resources/templates');
@@ -38,6 +39,7 @@ class InkWorks {
     this.bindResource('orders', orders);
     this.bindResource('policies', policies);
     this.bindResource('products', products);
+    this.bindResource('resthooks', resthooks);
     this.bindResource('tags', tags);
     this.bindResource('taxrates', taxrates);
     this.bindResource('templates', templates);

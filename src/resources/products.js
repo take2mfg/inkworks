@@ -1,27 +1,19 @@
-const productBaseFields = `
+const fields = `
   id
   name
   description
   sku
-  shipWidth
-  shipHeight
-  shipLength
-  shipWeight
-  visibility
-  media
+  width
+  height
+  length
+  deletedAt
   createdAt
   updatedAt
 `;
 
-const fields = `
-  ${productBaseFields}
-  relatedProducts
-  addons
-`;
-
 const listQuery = `
   query ($where: String, $limit: Int, $order: String) {
-    products(where: $where, limit: $limit, order: $order) {
+    itemcaches(where: $where, limit: $limit, order: $order) {
       ${fields}
     }
   }
@@ -29,31 +21,31 @@ const listQuery = `
 
 const retrieveQuery = `
   query($id: Int!) {
-    product(id: $id) {
+    itemcache(id: $id) {
       ${fields}
     }
   }
 `;
 
 const createQuery = `
-  mutation ($product: ProductCreateInput) {
-    createProduct(product: $product) {
+  mutation ($itemcache: ItemCacheCreateInput) {
+    createItemCache(itemcache: $itemcache) {
       ${fields}
     }
   }
 `;
 
 const updateQuery = `
-  mutation ($product: ProductUpdateInput) {
-    updateProduct(product: $product) {
+  mutation ($itemcache: ItemCacheUpdateInput) {
+    updateItemCache(itemcache: $itemcache) {
       ${fields}
     }
   }
 `;
 
 const deleteQuery = `
-  mutation ($product: ProductDeleteInput) {
-    deleteProduct(product: $product) {
+  mutation ($itemcache: ItemCacheDeleteInput) {
+    deleteItemCache(itemcache: $itemcache) {
       ${fields}
     }
   }
@@ -71,13 +63,13 @@ module.exports = {
   retrieve(id) {
     return this.request(retrieveQuery, { id });
   },
-  create(product) {
-    return this.request(createQuery, { product });
+  create(itemcache) {
+    return this.request(createQuery, { itemcache });
   },
-  update(id, product) {
-    return this.request(updateQuery, { product: { id, ...product } });
+  update(id, itemcache) {
+    return this.request(updateQuery, { itemcache: { id, ...itemcache } });
   },
   delete(id) {
-    return this.request(deleteQuery, { product: { id } });
+    return this.request(deleteQuery, { itemcache: { id } });
   }
 };

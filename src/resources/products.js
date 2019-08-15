@@ -3,17 +3,17 @@ const fields = `
   name
   description
   sku
-  width
-  height
-  length
-  deletedAt
+  shipWidth
+  shipHeight
+  shipLength
+  shipWeight
   createdAt
   updatedAt
 `;
 
 const listQuery = `
   query ($where: String, $limit: Int, $order: String) {
-    itemcaches(where: $where, limit: $limit, order: $order) {
+    products(where: $where, limit: $limit, order: $order) {
       ${fields}
     }
   }
@@ -21,31 +21,31 @@ const listQuery = `
 
 const retrieveQuery = `
   query($id: Int!) {
-    itemcache(id: $id) {
+    product(id: $id) {
       ${fields}
     }
   }
 `;
 
 const createQuery = `
-  mutation ($itemcache: ItemCacheCreateInput) {
-    createItemCache(itemcache: $itemcache) {
+  mutation ($product: ProductCreateInput) {
+    createProduct(product: $product) {
       ${fields}
     }
   }
 `;
 
 const updateQuery = `
-  mutation ($itemcache: ItemCacheUpdateInput) {
-    updateItemCache(itemcache: $itemcache) {
+  mutation ($product: ProductUpdateInput) {
+    updateProduct(product: $product) {
       ${fields}
     }
   }
 `;
 
 const deleteQuery = `
-  mutation ($itemcache: ItemCacheDeleteInput) {
-    deleteItemCache(itemcache: $itemcache) {
+  mutation ($product: ProductDeleteInput) {
+    deleteProduct(product: $product) {
       ${fields}
     }
   }
@@ -63,13 +63,13 @@ module.exports = {
   retrieve(id) {
     return this.request(retrieveQuery, { id });
   },
-  create(itemcache) {
-    return this.request(createQuery, { itemcache });
+  create(product) {
+    return this.request(createQuery, { product });
   },
-  update(id, itemcache) {
-    return this.request(updateQuery, { itemcache: { id, ...itemcache } });
+  update(id, product) {
+    return this.request(updateQuery, { product: { id, ...product } });
   },
   delete(id) {
-    return this.request(deleteQuery, { itemcache: { id } });
+    return this.request(deleteQuery, { product: { id } });
   }
 };

@@ -51,7 +51,7 @@ describe('Products - Resource', () => {
 
     expect(inkworks.request.calledOnce).to.equal(true);
     expect(inkworks.request.getCall(0).args[0]).to.equal(Products.createQuery);
-    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ itemcache: VARIABLES });
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ product: VARIABLES });
   });
 
   it('should send the right request (update)', async () => {
@@ -63,7 +63,7 @@ describe('Products - Resource', () => {
 
     expect(inkworks.request.calledOnce).to.equal(true);
     expect(inkworks.request.getCall(0).args[0]).to.equal(Products.updateQuery);
-    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ itemcache: { id: 100, ...VARIABLES } });
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ product: { id: 100, ...VARIABLES } });
   });
 
   it('should send the right request (delete)', async () => {
@@ -71,6 +71,6 @@ describe('Products - Resource', () => {
 
     expect(inkworks.request.calledOnce).to.equal(true);
     expect(inkworks.request.getCall(0).args[0]).to.equal(Products.deleteQuery);
-    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ itemcache: { id: 100 } });
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ product: { id: 100 } });
   });
 });

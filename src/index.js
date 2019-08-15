@@ -4,6 +4,7 @@ const addresses = require('./resources/addresses');
 const carts = require('./resources/carts');
 const coupons = require('./resources/coupons');
 const customers = require('./resources/customers');
+const items = require('./resources/items');
 const messages = require('./resources/messages');
 const orders = require('./resources/orders');
 const policies = require('./resources/policies');
@@ -35,6 +36,7 @@ class InkWorks {
     this.bindResource('carts', carts);
     this.bindResource('coupons', coupons);
     this.bindResource('customers', customers);
+    this.bindResource('items', items);
     this.bindResource('messages', messages);
     this.bindResource('orders', orders);
     this.bindResource('policies', policies);

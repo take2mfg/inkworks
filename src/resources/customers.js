@@ -11,6 +11,13 @@ const fields = `
   organizations
   demographics
   socialProfiles
+  taxRate {
+    id
+    name
+    rate
+    addToItemPrice
+    createdAt
+  }
 `;
 
 const listQuery = `

@@ -173,8 +173,8 @@ module.exports = {
   retrieve(id) {
     return this.request(retrieveQuery, { id });
   },
-  create(order) {
-    return this.request(createQuery, { order });
+  create(json) {
+    return this.request(createQuery, { json });
   },
   update(id, order) {
     return this.request(updateQuery, { order: { id, ...order } });

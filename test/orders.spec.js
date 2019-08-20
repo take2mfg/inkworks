@@ -51,7 +51,7 @@ describe('Orders - Resource', () => {
 
     expect(inkworks.request.calledOnce).to.equal(true);
     expect(inkworks.request.getCall(0).args[0]).to.equal(Orders.createQuery);
-    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ order: VARIABLES });
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ json: VARIABLES });
   });
 
   it('should send the right request (update)', async () => {

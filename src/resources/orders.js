@@ -44,8 +44,16 @@ const fields = `
     content
     dueDate
     completed
-    createdBy
-    assignedTo
+    createdBy {
+      id
+      fullName
+      providerId
+    }
+    assignedTo {
+      id
+      fullName
+      providerId
+    }
   }
   tags {
     id

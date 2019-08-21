@@ -15,18 +15,32 @@ const taxrates = require('./resources/taxrates');
 const templates = require('./resources/templates');
 const threads = require('./resources/threads');
 
+const API_ENDPOINT_P = 'https://platform-api.take2.co/graphql';
+const API_ENDPOINT_S = 'https://api.take2dev.com/graphql';
+
+function stripKey(apiKey) {
+  return apiKey.replace('test_', '');
+}
+
+function getEndpointForKey(apiKey) {
+  return /test_/gi.test(apiKey) ? API_ENDPOINT_S : API_ENDPOINT_P;
+}
+
 class InkWorks {
   constructor(apiKey, opts = {}) {
     if (!apiKey) {
       throw new Error('Missing apiKey in constructor.');
     }
 
-    this.apiKey = apiKey;
-    this.endpoint = opts.endpoint || 'https://platform-api.take2.co/graphql';
+    const endpoint = getEndpointForKey(apiKey);
+    const key = endpoint === API_ENDPOINT_S ? stripKey(apiKey) : apiKey;
+
+    this.apiKey = key;
+    this.endpoint = opts.endpoint || endpoint;
 
     this.client = new GraphQLClient(this.endpoint, {
       headers: {
-        Authorization: `Bearer ${apiKey}`
+        Authorization: `Bearer ${this.apiKey}`
       }
     });
 

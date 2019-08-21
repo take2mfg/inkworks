@@ -17,25 +17,12 @@ const lineItemFields = `
 
 const fields = `
   id
+  email
   dueDate
   invoiceNumber
   isDeletable
   isCancelled
   isCompleted
-  email
-  billingAddress
-  shippingAddress
-  legacyOrderId
-  discounts
-  message
-  reference
-  memo
-  customerId
-  userId
-  tags {
-    id
-    name
-  }
   orderStatus {
     id
     name
@@ -43,6 +30,26 @@ const fields = `
     color
     isProtected
     sortOrder
+  }
+  billingAddress
+  shippingAddress
+  discounts
+  message
+  reference
+  memo
+  customerId
+  userId
+  tasks {
+    id
+    content
+    dueDate
+    completed
+    createdBy
+    assignedTo
+  }
+  tags {
+    id
+    name
   }
   lineItems {
     ${lineItemFields}
@@ -182,11 +189,11 @@ module.exports = {
   delete(id) {
     return this.request(deleteQuery, { order: { id } });
   },
-  addOrderTag(orderId, tagString) {
-    return this.request(addOrderTagQuery, { orderId, tag: { name: tagString }});
+  addOrderTag(orderId, tag) {
+    return this.request(addOrderTagQuery, { orderId, tag: { name: tag }});
   },
-  removeOrderTag(orderId, tagId) {
-    return this.request(removeOrderTagQuery, { orderId, tag: { id: tagId }});
+  removeOrderTag(orderId, tag) {
+    return this.request(removeOrderTagQuery, { orderId, tag: { name: tag }});
   },
   setOrderStatus(orderId, orderStatusId) {
     return this.request(setOrderStatusQuery, { orderId, orderStatusId });

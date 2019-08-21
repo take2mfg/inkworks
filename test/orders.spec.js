@@ -83,11 +83,11 @@ describe('Orders - Resource', () => {
   });
 
   it('should send the right request (removeOrderTag)', async () => {
-    await inkworks.orders.removeOrderTag(1234, 4321);
+    await inkworks.orders.removeOrderTag(1234, 'foo');
 
     expect(inkworks.request.calledOnce).to.equal(true);
     expect(inkworks.request.getCall(0).args[0]).to.equal(Orders.removeOrderTagQuery);
-    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ orderId: 1234, tag: { id: 4321 } });
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ orderId: 1234, tag: { name: 'foo' } });
   });
 
   it('should send the right request (setOrderStatus)', async () => {

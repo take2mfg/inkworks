@@ -139,4 +139,24 @@ describe('Orders - Resource', () => {
     expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ lineItemId: 1234, assets: { foo: 'bar' } });
   });
 
+  it('should send the right request (addMessage)', async () => {
+    await inkworks.orders.addMessage(1234, {
+      type: 'note',
+      content: 'A new message.',
+      meta: {
+        foo: 'bar',
+      },
+    });
+
+    expect(inkworks.request.calledOnce).to.equal(true);
+    expect(inkworks.request.getCall(0).args[0]).to.equal(Orders.addOrderMessageQuery);
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ orderId: 1234, message: {
+      type: 'note',
+      content: 'A new message.',
+      meta: {
+        foo: 'bar',
+      }
+    } });
+  });
+
 });

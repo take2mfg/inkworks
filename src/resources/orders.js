@@ -170,6 +170,7 @@ const updateDesignQuery = `
     }
   }
 `;
+
 const updateAssetsQuery = `
   mutation ($lineItemId: Int, $assets: JSON) {
     updateAssets(lineItemId: $lineItemId, assets: $assets) {
@@ -177,6 +178,33 @@ const updateAssetsQuery = `
     }
   }
 `;
+
+const addOrderMessageQuery = `
+  mutation ($orderId: Int, $message: JSON) {
+    addOrderMessage(orderId: $orderId, message: $message) {
+      id
+      threads {
+        id
+        messages {
+          id
+          internal
+          type
+          content
+          meta
+          senderId
+          senderType
+          silent
+          threadId
+          read
+          readByCustomers
+          readByUsers
+          createdAt
+          updatedAt
+        }
+      }
+    }
+  }
+`
 
 module.exports = {
   listQuery,
@@ -192,6 +220,7 @@ module.exports = {
   setOrderMemoQuery,
   updateDesignQuery,
   updateAssetsQuery,
+  addOrderMessageQuery,
   list(variables = {}) {
     return this.request(listQuery, variables);
   },
@@ -231,4 +260,7 @@ module.exports = {
   updateAssets(lineItemId, assets) {
     return this.request(updateAssetsQuery, { lineItemId, assets });
   },
+  addMessage(orderId, message) {
+    return this.request(addOrderMessageQuery, { orderId, message });
+  }
 };

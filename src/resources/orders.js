@@ -38,7 +38,17 @@ const fields = `
   reference
   memo
   customerId
+  customer {
+    id
+    name
+    email
+  }
   userId
+  user {
+    id
+    fullName
+    providerId
+  }
   tasks {
     id
     content

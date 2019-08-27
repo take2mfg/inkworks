@@ -204,6 +204,18 @@ const addOrderMessageQuery = `
       }
     }
   }
+`;
+
+const addOrderTaskQuery = `
+  mutation ($orderId: Int, $task: JSON) {
+    addOrderTask(orderId: $orderId, task: $task) {
+      id
+      tasks {
+        id
+        content
+      }
+    }
+  }
 `
 
 module.exports = {
@@ -221,6 +233,7 @@ module.exports = {
   updateDesignQuery,
   updateAssetsQuery,
   addOrderMessageQuery,
+  addOrderTaskQuery,
   list(variables = {}) {
     return this.request(listQuery, variables);
   },
@@ -262,5 +275,8 @@ module.exports = {
   },
   addMessage(orderId, message) {
     return this.request(addOrderMessageQuery, { orderId, message });
+  },
+  addTask(orderId, task) {
+    return this.request(addOrderTaskQuery, { orderId, task });
   }
 };

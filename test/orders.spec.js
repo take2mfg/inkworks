@@ -159,4 +159,22 @@ describe('Orders - Resource', () => {
     } });
   });
 
+  it('should send the right request (addTask)', async () => {
+    const due = new Date().getTime();
+
+    await inkworks.orders.addTask(1234, {
+      content: 'A new task',
+      dueDate: due,
+      assignedTo: 1,
+    });
+
+    expect(inkworks.request.calledOnce).to.equal(true);
+    expect(inkworks.request.getCall(0).args[0]).to.equal(Orders.addOrderTaskQuery);
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ orderId: 1234, task: {
+      content: 'A new task',
+      dueDate: due,
+      assignedTo: 1,
+    } });
+  });
+
 });

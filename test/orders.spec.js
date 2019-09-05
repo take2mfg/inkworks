@@ -177,4 +177,20 @@ describe('Orders - Resource', () => {
     } });
   });
 
+  it('should send the right request (addLineItem)', async () => {
+    await inkworks.orders.addLineItem(1234, {
+      name: 'Sample Item',
+      price: 1000,
+      qty: 5
+    });
+
+    expect(inkworks.request.calledOnce).to.equal(true);
+    expect(inkworks.request.getCall(0).args[0]).to.equal(Orders.addLineItemQuery);
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ orderId: 1234, lineItem: {
+      name: 'Sample Item',
+      price: 1000,
+      qty: 5
+    } });
+  });
+
 });

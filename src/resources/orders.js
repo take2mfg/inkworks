@@ -216,7 +216,15 @@ const addOrderTaskQuery = `
       }
     }
   }
-`
+`;
+
+const addLineItemQuery = `
+  mutation ($orderId: Int, $lineItem: JSON) {
+    addLineItem(orderId: $orderId, lineItem: $lineItem) {
+      ${fields}
+    }
+  }
+`;
 
 module.exports = {
   listQuery,
@@ -234,6 +242,7 @@ module.exports = {
   updateAssetsQuery,
   addOrderMessageQuery,
   addOrderTaskQuery,
+  addLineItemQuery,
   list(variables = {}) {
     return this.request(listQuery, variables);
   },
@@ -250,10 +259,10 @@ module.exports = {
     return this.request(deleteQuery, { order: { id } });
   },
   addOrderTag(orderId, tag) {
-    return this.request(addOrderTagQuery, { orderId, tag: { name: tag }});
+    return this.request(addOrderTagQuery, { orderId, tag: { name: tag } });
   },
   removeOrderTag(orderId, tag) {
-    return this.request(removeOrderTagQuery, { orderId, tag: { name: tag }});
+    return this.request(removeOrderTagQuery, { orderId, tag: { name: tag } });
   },
   setOrderStatus(orderId, orderStatusId) {
     return this.request(setOrderStatusQuery, { orderId, orderStatusId });
@@ -278,5 +287,8 @@ module.exports = {
   },
   addTask(orderId, task) {
     return this.request(addOrderTaskQuery, { orderId, task });
+  },
+  addLineItem(orderId, lineItem) {
+    return this.request(addLineItemQuery, { orderId, lineItem });
   }
 };

@@ -193,4 +193,12 @@ describe('Orders - Resource', () => {
     } });
   });
 
+  it('should send the right request (sendOrder)', async () => {
+    await inkworks.orders.sendOrder(1234);
+
+    expect(inkworks.request.calledOnce).to.equal(true);
+    expect(inkworks.request.getCall(0).args[0]).to.equal(Orders.sendOrderQuery);
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({ json: { orderId: 1234 } });
+  });
+
 });

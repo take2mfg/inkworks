@@ -226,6 +226,12 @@ const addLineItemQuery = `
   }
 `;
 
+const sendOrderQuery = `
+  mutation ($json: JSON) {
+    sendOrder(json: $json)
+  }
+`;
+
 module.exports = {
   listQuery,
   retrieveQuery,
@@ -243,6 +249,7 @@ module.exports = {
   addOrderMessageQuery,
   addOrderTaskQuery,
   addLineItemQuery,
+  sendOrderQuery,
   list(variables = {}) {
     return this.request(listQuery, variables);
   },
@@ -290,5 +297,8 @@ module.exports = {
   },
   addLineItem(orderId, lineItem) {
     return this.request(addLineItemQuery, { orderId, lineItem });
+  },
+  sendOrder(orderId) {
+    return this.request(sendOrderQuery, { json: { orderId } })
   }
 };

@@ -22,7 +22,9 @@ describe('RestHooks - Resource', () => {
 
   it('should send the right request (list)', async () => {
     const VARIABLES = {
-      where: `{ foo: "bar" }`,
+      where: {
+        foo: 'bar'
+      },
       limit: 10,
       order: 'reverse:createdAt'
     };
@@ -31,7 +33,10 @@ describe('RestHooks - Resource', () => {
 
     expect(inkworks.request.calledOnce).to.equal(true);
     expect(inkworks.request.getCall(0).args[0]).to.equal(RestHooks.listQuery);
-    expect(inkworks.request.getCall(0).args[1]).to.deep.equal(VARIABLES);
+    expect(inkworks.request.getCall(0).args[1]).to.deep.equal({
+      ...VARIABLES,
+      where: JSON.stringify(VARIABLES.where)
+    });
   });
 
   it('should send the right request (retrieve)', async () => {

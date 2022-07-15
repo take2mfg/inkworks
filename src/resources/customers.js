@@ -1,3 +1,5 @@
+const { clean } = require('../utils');
+
 const fields = `
   id
   name
@@ -67,7 +69,7 @@ module.exports = {
   updateQuery,
   deleteQuery,
   list(variables = {}) {
-    return this.request(listQuery, variables);
+    return this.request(listQuery, clean(variables));
   },
   retrieve(id) {
     return this.request(retrieveQuery, { id: id });

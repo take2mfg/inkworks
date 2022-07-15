@@ -1,3 +1,5 @@
+const { clean } = require('../utils');
+
 const lineItemFields = `
   id
   name
@@ -251,7 +253,7 @@ module.exports = {
   addLineItemQuery,
   sendOrderQuery,
   list(variables = {}) {
-    return this.request(listQuery, variables);
+    return this.request(listQuery, clean(variables));
   },
   retrieve(id) {
     return this.request(retrieveQuery, { id });

@@ -1,7 +1,7 @@
 {
   "name": "inkworks",
   "version": "0.0.18",
-  "description": "Ink.Work Platform API Wrapper",
+  "description": "Connect to the Ink.Works API via Node.js",
   "keywords": [
     "inkworks",
     "print",

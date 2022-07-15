@@ -1,10 +1,9 @@
 {
   "name": "inkworks",
   "version": "0.0.17",
-  "description": "Ink.Works (formerly Take2) Platform API Wrapper",
+  "description": "Ink.Work Platform API Wrapper",
   "keywords": [
     "inkworks",
-    "take2",
     "print",
     "design",
     "orders",
@@ -16,7 +15,7 @@
   "scripts": {
     "test": "mocha"
   },
-  "author": "Take2 <support@take2.co> (https://www.take2.co/)",
+  "author": "Ink.Works <support@ink.works> (https://ink.works)",
   "license": "MIT",
   "engines": {
     "node": "^6 || ^8.1 || >=10.*"

@@ -16,8 +16,8 @@ const taxrates = require('./resources/taxrates');
 const templates = require('./resources/templates');
 const threads = require('./resources/threads');
 
-const API_ENDPOINT_P = 'https://platform-api.take2.co/graphql';
-const API_ENDPOINT_S = 'https://api.take2dev.com/graphql';
+const API_ENDPOINT_P = 'https://api.ink.works/graphql';
+const API_ENDPOINT_S = 'https://api.inkworks.dev/graphql';
 
 function stripKey(apiKey) {
   return apiKey.replace('test_', '');

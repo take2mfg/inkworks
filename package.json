@@ -1,6 +1,6 @@
 {
   "name": "inkworks",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Connect to the Ink.Works API via Node.js",
   "keywords": [
     "inkworks",

@@ -9,7 +9,7 @@ const fields = `
 
 const listQuery = `
   query ($where: String, $limit: Int, $order: String) {
-    customers(where: $where, limit: $limit, order: $order) {
+    users(where: $where, limit: $limit, order: $order) {
       ${fields}
     }
   }
@@ -17,7 +17,7 @@ const listQuery = `
 
 const retrieveQuery = `
   query($id: Int!) {
-    customer(id: $id) {
+    user(id: $id) {
       ${fields}
     }
   }

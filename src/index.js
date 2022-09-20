@@ -15,6 +15,7 @@ const tags = require('./resources/tags');
 const taxrates = require('./resources/taxrates');
 const templates = require('./resources/templates');
 const threads = require('./resources/threads');
+const users = require('./resources/users');
 
 const API_ENDPOINT_P = 'https://api.ink.works/graphql';
 const API_ENDPOINT_S = 'https://api.inkworks.dev/graphql';
@@ -62,6 +63,7 @@ class InkWorks {
     this.bindResource('taxrates', taxrates);
     this.bindResource('templates', templates);
     this.bindResource('threads', threads);
+    this.bindResource('users', users);
   }
 
   bindResource(key, resource) {

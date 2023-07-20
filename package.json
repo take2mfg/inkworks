@@ -13,7 +13,8 @@
   "homepage": "https://github.com/take2mfg/inkworks",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "report:license": "npx license-report --department.value=InkWorks --relatedTo.value=inkworks --output=table > LICENSE_REPORT.txt"
   },
   "author": "Ink.Works <support@ink.works> (https://ink.works)",
   "license": "MIT",
